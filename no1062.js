@@ -1,3 +1,6 @@
+// 문제를 제대로 안읽어 예제 답만 맞는 상황
+//! every word is start with 'anta', end with 'tica'
+
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 let input = fs.readFileSync(filePath).toString().trim().split("\n");
