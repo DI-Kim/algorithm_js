@@ -14,7 +14,7 @@ class Queue {
     isEmpty() {
         return this.front == null && this.rear === null;
     }
-    insert(data) {
+    push(data) {
         const newNode = new Node(data);
         if (this.isEmpty()) this.front = newNode;
         else this.rear.next = newNode;
@@ -23,30 +23,15 @@ class Queue {
         this.rear = newNode;
     }
 
-    remove() {
+    popleft() {
         if (this.isEmpty()) return;
+        const returnValue = this.front;
         this.front = this.front.next;
         // this.front == null
         // previously in the queue there was only one element and that was deleted
         // so this.rear have to be shifted to newNode;
         if (!this.front) this.rear = null;
-    }
 
-    peekFront() {
-        if (this.isEmpty()) return -404;
-        return this.front.data;
-    }
-
-    display() {
-        if (this.isEmpty()) return;
-        let curr = this.front;
-        process.stdout.write("(FRONT) ");
-        // when the curr hits the rear pointer is going to stop.
-        // it will make curr to stop at the last node.
-        while (curr != this.rear) {
-            process.stdout.write(`${curr.data} ---> `);
-            curr = curr.next;
-        }
-        process.stdout.write(`${this.rear.data} (REAR)\n`);
+        return returnValue;
     }
 }
